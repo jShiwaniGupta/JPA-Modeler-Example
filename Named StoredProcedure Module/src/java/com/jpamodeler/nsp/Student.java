@@ -11,6 +11,11 @@ import javax.persistence.ParameterMode;
 import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
 
+/**
+ *
+ * @author Shiwani Gupta <jShiwaniGupta@gmail.com>
+ */
+
 @Entity
 @Table(name = "student")
 @NamedStoredProcedureQuery(name = "FindStudentByBatch", procedureName = "studentAll", resultClasses = {Student.class}, parameters = {
