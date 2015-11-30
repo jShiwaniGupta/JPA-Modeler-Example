@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xs="false" id="_14485675645401" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+    <jpa:package>com.jpamodeler.embeddable</jpa:package>
+    <jpa:entity xre="false" sm="false" abstract="false" class="Person" visibile="true" minimized="false" rootElement="_14485675645401" id="_1448567572712">
+        <jpa:attributes>
+            <basic name="name" attribute-type="String" visibile="true" id="_14485676912345">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </basic>
+            <basic name="age" attribute-type="String" visibile="true" id="_144856894606217">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </basic>
+            <embedded name="homeAddress" connected-class-id="_1448567728334" attribute-type="Address" visibile="true" id="_14485714316389">
+                <jpa:attribute-override name="street">
+                    <jpa:column name="h_street" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                </jpa:attribute-override>
+                <jpa:attribute-override name="zipcode.mainCode">
+                    <jpa:column name="h_maincode" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                </jpa:attribute-override>
+                <jpa:attribute-override name="city">
+                    <jpa:column name="h_city" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                </jpa:attribute-override>
+                <jpa:attribute-override name="state">
+                    <jpa:column name="h_state" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                </jpa:attribute-override>
+                <jpa:attribute-override name="country">
+                    <jpa:column name="h_country" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                </jpa:attribute-override>
+                <jpa:attribute-override name="zipcode.codeSuffix">
+                    <jpa:column name="h_codesuffix" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                </jpa:attribute-override>
+                <jpa:attribute-override name="phone">
+                    <jpa:column name="H_PHONE" unique="false" nullable="true" insertable="true" updatable="true" table="zxZ" length="255" precision="0" scale="0"/>
+                </jpa:attribute-override>
+            </embedded>
+            <embedded name="officeAddress" connected-class-id="_1448567728334" attribute-type="Address" visibile="true" id="_144857143582810">
+                <jpa:attribute-override name="zipcode.codeSuffix">
+                    <jpa:column name="o_codesuffix" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                </jpa:attribute-override>
+                <jpa:attribute-override name="zipcode.mainCode">
+                    <jpa:column name="o_maincode" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                </jpa:attribute-override>
+                <jpa:attribute-override name="street">
+                    <jpa:column name="o_street" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                </jpa:attribute-override>
+                <jpa:attribute-override name="city">
+                    <jpa:column name="o_city" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                </jpa:attribute-override>
+                <jpa:attribute-override name="state">
+                    <jpa:column name="o_state" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                </jpa:attribute-override>
+                <jpa:attribute-override name="country">
+                    <jpa:column name="o_country" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                </jpa:attribute-override>
+                <jpa:attribute-override name="phone">
+                    <jpa:column name="O_PHONE" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                </jpa:attribute-override>
+            </embedded>
+            <jpa:id name="id" attribute-type="Long" visibile="true" id="_14485677072216">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:id>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:embeddable sm="false" abstract="false" class="Address" visibile="true" minimized="false" rootElement="_14485675645401" id="_1448567728334">
+        <jpa:attributes>
+            <basic name="street" attribute-type="String" visibile="true" id="_14485677822698">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </basic>
+            <basic name="city" attribute-type="String" visibile="true" id="_14485677828629">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </basic>
+            <basic name="state" attribute-type="String" visibile="true" id="_144856778313610">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </basic>
+            <basic name="country" attribute-type="String" visibile="true" id="_144856845541514">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </basic>
+            <element-collection name="phone" target-class="String" collection-type="java.util.Collection" visibile="true" id="_144861824507211">
+                <jpa:collection-table/>
+            </element-collection>
+            <embedded name="zipcode" connected-class-id="_1448568389117" attribute-type="Zipcode" visibile="true" id="_14485714198508"/>
+        </jpa:attributes>
+    </jpa:embeddable>
+    <jpa:embeddable sm="false" abstract="false" class="Zipcode" visibile="true" minimized="false" rootElement="_14485675645401" id="_1448568389117">
+        <jpa:attributes>
+            <basic name="mainCode" attribute-type="String" visibile="true" id="_144856839267512">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </basic>
+            <basic name="codeSuffix" attribute-type="String" visibile="true" id="_144856839284713">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </basic>
+        </jpa:attributes>
+    </jpa:embeddable>
+    <jpa:diagram id="_14485675645402">
+        <plane elementRef="_14485675645401" id="_14485675645403_p">
+            <shape elementRef="_1448567572712" id="_1448567572712_gui">
+                <Bounds x="166.0" y="58.0" width="137.0" height="168.0"/>
+            </shape>
+            <shape elementRef="_1448567728334" id="_1448567728334_gui">
+                <Bounds x="405.0" y="58.0" width="148.0" height="176.0"/>
+            </shape>
+            <shape elementRef="_1448568389117" id="_1448568389117_gui">
+                <Bounds x="525.0" y="261.0" width="145.0" height="79.0"/>
+            </shape>
+        </plane>
+    </jpa:diagram>
+</jpa:entity-mappings>
