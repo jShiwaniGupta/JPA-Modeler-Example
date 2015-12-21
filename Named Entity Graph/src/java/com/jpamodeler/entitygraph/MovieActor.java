@@ -10,7 +10,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "MOVIE_ACTORS_ENTITY_GRAPH")
+@Table(name = "EG_MOVIE_ACTOR")
 
 public class MovieActor implements Serializable {
 
@@ -21,7 +21,7 @@ public class MovieActor implements Serializable {
     private Integer id;
 
     @OneToMany(targetEntity = MovieActorAward.class)
-    @JoinColumn(name = "ID")
+    @JoinColumn(name = "MOVIE_ACTOR_ID", referencedColumnName = "ID")
     private Set<MovieActorAward> movieActorAwards;
 
     public MovieActor() {

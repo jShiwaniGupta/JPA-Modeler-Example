@@ -1,5 +1,7 @@
-package com.jpamodeler.entitygraph;
+package com.jpamodeler.entitygraph.test;
 
+import com.jpamodeler.entitygraph.Movie;
+import com.jpamodeler.entitygraph.MovieActor;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
@@ -23,10 +25,16 @@ public class Tester {
     @PostConstruct
     void init() {
 
-        List list = em.createNamedQuery("Movie.findAll")
+        List<Movie> list = em.createNamedQuery("Movie.findAll", Movie.class)
                 .setHint("javax.persistence.fetchgraph", em.getEntityGraph("movieWithActorsAndAwards"))
                 .getResultList();
         System.out.println("List -: " + list);
+        for (Movie movie : list) {
+            System.out.println("Movie : " + movie.getName());
+            for (MovieActor actor : movie.getMovieActors()) {
+                System.out.println("Actor : " + actor.getActor());
+            }
+        }
 
     }
 }

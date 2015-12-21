@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "MOVIE_AWARDS_ENTITY_GRAPH")
+@Table(name = "EG_MOVIE_AWARD")
 
 public class MovieAward implements Serializable {
 
