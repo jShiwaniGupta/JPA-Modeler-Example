@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" pkg="com.jpamodeler.entitygraph" xs="false" id="_14506132124701" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+    <jpa:entity xre="false" compositePrimaryKeyType="NONE" sm="false" abstract="false" class="Movie" visibile="true" minimized="false" rootElement="_14506132124701" id="_14506132126854">
+        <jpa:attributes>
+            <basic attribute-type="String" visibile="true" name="name" id="_14506132127467">
+                <annotation>
+                    <name>javax.validation.constraints.NotNull</name>
+                </annotation>
+                <annotation>
+                    <name>javax.validation.constraints.Size</name>
+                </annotation>
+            </basic>
+            <one-to-many collection-type="java.util.Set" connected-entity-id="_145061321294910" target-entity="MovieActor" visibile="true" name="movieActors" id="_14506132127036">
+                <jpa:join-column name="ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </one-to-many>
+            <one-to-many collection-type="java.util.Set" connected-entity-id="_145061321340820" target-entity="MovieDirector" fetch="EAGER" visibile="true" name="movieDirectors" id="_14506132127498">
+                <jpa:join-column name="ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </one-to-many>
+            <one-to-many collection-type="java.util.Set" connected-entity-id="_145061321325217" target-entity="MovieAward" visibile="true" name="movieAwards" id="_14506132127509">
+                <jpa:join-column name="ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </one-to-many>
+            <jpa:id attribute-type="Integer" visibile="true" name="id" id="_14506132126935"/>
+        </jpa:attributes>
+        <jpa:nq name="Movie.findAll">
+            <jpa:query>SELECT m FROM Movie m</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Movie.findAllById">
+            <jpa:query>SELECT m FROM Movie m WHERE m.id = :movieId</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Movie.findAllByIds">
+            <jpa:query>SELECT m FROM Movie m WHERE m.id IN :movieIds</jpa:query>
+        </jpa:nq>
+        <jpa:table name="MOVIE_ENTITY_GRAPH"/>
+        <jpa:neg name="movieWithActors">
+            <jpa:named-attribute-node name="movieActors"/>
+        </jpa:neg>
+        <jpa:neg name="movieWithActorsAndAwards">
+            <jpa:named-attribute-node name="movieActors" subgraph="movieActorsGraph"/>
+            <jpa:subgraph name="movieActorsGraph">
+                <jpa:named-attribute-node name="movieActorAwards"/>
+            </jpa:subgraph>
+        </jpa:neg>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyType="NONE" sm="false" abstract="false" class="MovieActor" visibile="true" minimized="false" rootElement="_14506132124701" id="_145061321294910">
+        <jpa:attributes>
+            <basic attribute-type="String" visibile="true" name="actor" id="_145061321294912">
+                <annotation>
+                    <name>javax.validation.constraints.NotNull</name>
+                </annotation>
+                <annotation>
+                    <name>javax.validation.constraints.Size</name>
+                </annotation>
+            </basic>
+            <one-to-many collection-type="java.util.Set" connected-entity-id="_145061321311314" target-entity="MovieActorAward" visibile="true" name="movieActorAwards" id="_145061321294913">
+                <jpa:join-column name="ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </one-to-many>
+            <jpa:id attribute-type="Integer" visibile="true" name="id" id="_145061321294911"/>
+        </jpa:attributes>
+        <jpa:table name="MOVIE_ACTORS_ENTITY_GRAPH"/>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyType="NONE" sm="false" abstract="false" class="MovieActorAward" visibile="true" minimized="false" rootElement="_14506132124701" id="_145061321311314">
+        <jpa:attributes>
+            <basic attribute-type="String" visibile="true" name="award" id="_145061321311316">
+                <annotation>
+                    <name>javax.validation.constraints.NotNull</name>
+                </annotation>
+                <annotation>
+                    <name>javax.validation.constraints.Size</name>
+                </annotation>
+            </basic>
+            <jpa:id attribute-type="Integer" visibile="true" name="id" id="_145061321311315"/>
+        </jpa:attributes>
+        <jpa:table name="MOVIE_ACTOR_AWARDS_ENTITY_GRAPH"/>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyType="NONE" sm="false" abstract="false" class="MovieAward" visibile="true" minimized="false" rootElement="_14506132124701" id="_145061321325217">
+        <jpa:attributes>
+            <basic attribute-type="String" visibile="true" name="award" id="_145061321325219">
+                <annotation>
+                    <name>javax.validation.constraints.NotNull</name>
+                </annotation>
+                <annotation>
+                    <name>javax.validation.constraints.Size</name>
+                </annotation>
+            </basic>
+            <jpa:id attribute-type="Integer" visibile="true" name="id" id="_145061321325218"/>
+        </jpa:attributes>
+        <jpa:table name="MOVIE_AWARDS_ENTITY_GRAPH"/>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyType="NONE" sm="false" abstract="false" class="MovieDirector" visibile="true" minimized="false" rootElement="_14506132124701" id="_145061321340820">
+        <jpa:attributes>
+            <basic attribute-type="String" visibile="true" name="director" id="_145061321340922">
+                <annotation>
+                    <name>javax.validation.constraints.NotNull</name>
+                </annotation>
+                <annotation>
+                    <name>javax.validation.constraints.Size</name>
+                </annotation>
+            </basic>
+            <jpa:id attribute-type="Integer" visibile="true" name="id" id="_145061321340921"/>
+        </jpa:attributes>
+        <jpa:table name="MOVIE_DIRECTORS_ENTITY_GRAPH"/>
+    </jpa:entity>
+    <jpa:diagram id="_14506132124732">
+        <plane elementRef="_14506132124701" id="_14506132124763_p">
+            <shape elementRef="_14506132126854" id="_14506132126854_gui">
+                <Bounds x="168.0" y="26.0" width="140.0" height="168.0"/>
+            </shape>
+            <shape elementRef="_145061321294910" id="_145061321294910_gui">
+                <Bounds x="373.0" y="283.0" width="160.0" height="126.0"/>
+            </shape>
+            <shape elementRef="_145061321311314" id="_145061321311314_gui">
+                <Bounds x="457.0" y="26.0" width="197.0" height="92.0"/>
+            </shape>
+            <shape elementRef="_145061321325217" id="_145061321325217_gui">
+                <Bounds x="181.0" y="390.0" width="166.0" height="92.0"/>
+            </shape>
+            <shape elementRef="_145061321340820" id="_145061321340820_gui">
+                <Bounds x="-7.0" y="267.0" width="175.0" height="92.0"/>
+            </shape>
+        </plane>
+    </jpa:diagram>
+</jpa:entity-mappings>
