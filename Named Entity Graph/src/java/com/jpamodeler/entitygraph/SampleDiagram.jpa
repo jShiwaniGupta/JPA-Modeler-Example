@@ -119,7 +119,7 @@
                 <Bounds x="181.0" y="390.0" width="166.0" height="92.0"/>
             </shape>
             <shape elementRef="_145061321340820" id="_145061321340820_gui">
-                <Bounds x="-7.0" y="267.0" width="175.0" height="92.0"/>
+                <Bounds x="6.0" y="267.0" width="175.0" height="92.0"/>
             </shape>
         </plane>
     </jpa:diagram>
